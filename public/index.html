@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.5.3/ethers.umd.min.js" integrity="sha512-DGSIUFeBFmS0D++IURtKLQf2bjsw7VNvtEm5jg4uxwM/EFB1sfbROoG21dy1PR13NXx0oT64KkcIv1HC/MFl2Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="staking.css" />
+    <link rel="stylesheet" type="text/css" href="modal.css" />
+    <script src="staking.js"></script>
+    <title>Staking</title>
+</head>
+
+<body>
+    <div class="header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+           <div class="container">
+            <a class="navbar-brand" href="#">
+                <div class="logo-main">
+                    <img src="images/logo.png" class="img-fluid">
+                </div>
+                <span>House of Spoons Staking</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</div>
+<div class="container">
+    <div class="main-wrapper">
+        <button id="checkWalletConnection" class="contentBtn">Connect wallet</button>
+
+        <div id="content" class="hidden container">
+            <div id="stakeble" class="scrollableContent">
+                <h3 class="title">NFT staking</h3>
+                <div id="stakableSlider" class="bstimeslider">
+                    <div class="viewContainer">
+                        <div id="showStakable" class="tslshow">
+                        </div>
+                    </div>
+                </div>
+                <button id="stakeBtn" class="contentBtn">Stake</button>
+            </div>
+
+            <div id="staked" class="scrollableContent">
+                <div id="stakedSlider" class="bstimeslider">
+                    <div class="viewContainer">
+                        <div id="showStaked" class="tslshow">
+                        </div>
+                    </div>
+                </div>
+                <button id="unstakeBtn" class="contentBtn">Unstake</button>
+            </div>
+            <div id="claimContent">
+                <div id="claimAmmount"></div>
+                <button id="claimBtn" class="contentBtn" >Claim Rewards</button>
+            </div>
+        </div>
+        <button id="approveBtn" class="contentBtn hidden">Unlock NFTs for staking</button>
+    </div>
+</div>
+
+
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <p class="footer-text">&copy; Copy right all right reserved 2022 <a href="#"> House of spoons Staking </a></p>
+
+            <div class="social-icons">
+                <ul class="list-unstyled">
+                    <li><a href="#"><img src="images/discord.png"></a></li>
+                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-telegram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<script type="text/javascript">
+  
+        // $("#showStakable").slick({
+        //     dots: false,
+        //     infinite: false,
+        //     speed: 300,
+        //     slidesToShow: 4,
+        //     slidesToScroll: 1,
+        //     arrows: true,
+        //     prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+        //     nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+        //     responsive: [
+        //     {
+        //         breakpoint: 1024,
+        //         settings: {
+        //             slidesToShow: 3,
+        //             slidesToScroll: 1,
+        //         },
+        //     },
+        //     {
+        //         breakpoint: 600,
+        //         settings: {
+        //             slidesToShow: 2,
+        //             slidesToScroll: 1,
+        //         },
+        //     },
+        //     {
+        //         breakpoint: 480,
+        //         settings: {
+        //             slidesToShow: 1,
+        //             slidesToScroll: 1,
+        //         },
+        //     },
+        //     ],
+        // });
+
+    // setTimeout(function() { 
+    //     $("#showStaked").slick({
+    //         dots: false,
+    //         infinite: false,
+    //         speed: 300,
+    //         slidesToShow: 4,
+    //         slidesToScroll: 1,
+    //         arrows: true,
+    //         prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+    //         nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+    //         responsive: [
+    //         {
+    //             breakpoint: 1024,
+    //             settings: {
+    //                 slidesToShow: 3,
+    //                 slidesToScroll: 1,
+    //             },
+    //         },
+    //         {
+    //             breakpoint: 600,
+    //             settings: {
+    //                 slidesToShow: 2,
+    //                 slidesToScroll: 1,
+    //             },
+    //         },
+    //         {
+    //             breakpoint: 480,
+    //             settings: {
+    //                 slidesToShow: 1,
+    //                 slidesToScroll: 1,
+    //             },
+    //         },
+    //         ],
+    //     });
+    // }, 7000);
+
+
+
+    $(document).ready(function(){
+        $("#unstakeBtn").attr("disabled", true);
+        $("#stakeBtn").attr("disabled", true);
+        $("#claimBtn").attr("disabled", true);
+
+
+
+
+        $('body').on('click','#showStakable .bktibx', function(){
+
+            if ($(this).hasClass('staked')) {
+                $("#stakeBtn").attr("disabled", false);
+            }
+
+            else {
+                $("#stakeBtn").attr("disabled", true);
+            }
+
+            if($('#showStakable .bktibx.staked').children().length > 0) {
+                $("#stakeBtn").attr("disabled", false);
+            } else {
+                $("#stakeBtn").attr("disabled", true);
+            }
+        });
+
+        $('body').on('click','#showStaked .bktibx', function(){
+
+            if ($(this).hasClass('staked')) {
+                $("#unstakeBtn").attr("disabled", false);
+            }
+
+            else {
+                $("#unstakeBtn").attr("disabled", true);
+            }
+
+            if($('#showStaked .bktibx.unstaked').children().length > 0) {
+                $("#unstakeBtn").attr("disabled", false);
+            } else {
+                $("#unstakeBtn").attr("disabled", true);
+            }
+        });
+
+    });
+</script>
+</body>
